@@ -1,32 +1,32 @@
 #include "sort.h"
 
 /**
- * swap - swap two numbers
- * @a: first number
- * @b: second number
+ * swap - swaps two numbers
+ * @a: The first number
+ * @b: The second number
  **/
 void swap(int *a, int *b)
 {
-	int temp = *a;
+	int tmp = *a;
 	*a = *b;
-	*b = temp;
+	*b = tmp;
 }
 
 /**
- * partition - split array around pivot
- * @arr: array
- * @first: first element
- * @last: last element
- * @size: size
- * Return: i
+ * partition - split array around a pivot
+ * @arr: The array
+ * @first_elem: The first element
+ * @last_elem: The last element
+ * @size: Array size
+ * Return: i integer
  */
-int partition(int *arr, int first, int last, size_t size)
+int partition(int *arr, int first_elem, int last_elem, size_t size)
 {
-	int pivot = arr[last];
-	int i = first;
+	int pivot = arr[last_elem];
+	int i = first_elem;
 	int j;
 
-	for (j = first; j < last; j++)
+	for (j = first; j < last_elem; j++)
 	{
 		if (arr[j] <= pivot)
 		{
@@ -36,37 +36,37 @@ int partition(int *arr, int first, int last, size_t size)
 			i++;
 		}
 	}
-	swap(&arr[i], &arr[last]);
+	swap(&arr[i], &arr[last_elem]);
 	if (i != j)
 		print_array(arr, size);
 	return (i);
 }
 
 /**
- * quickSort - sort a part of the list
-* @arr: array
- * @first: first element
- * @last: last element
- * @size: size
- * Return: nothing
+ * quickSort - sorts a part of the list
+* @arr: The array to be sorted
+ * @first_elem: first element
+ * @last_elem: last element
+ * @size: Array size
+ * Return: no return
  */
-void quickSort(int *arr, int first, int last, size_t size)
+void quickSort(int *arr, int first_elem, int last_elem, size_t size)
 {
 	int pivot;
 
-	if (first < last)
+	if (first_elem < last_elem)
 	{
-		pivot = partition(arr, first, last, size);
-		quickSort(arr, first, pivot - 1, size);
-		quickSort(arr, pivot + 1, last, size);
+		pivot = partition(arr, first_elem, last_elem, size);
+		quickSort(arr, first_elem, pivot - 1, size);
+		quickSort(arr, pivot + 1, last_elem, size);
 	}
 }
 
 /**
- * quick_sort - quick sort method array
- * @array: array
- * @size: size
- * Return: nothing
+ * quick_sort - quick sort method of an array
+ * @array: The array to be sorted
+ * @size: The array size
+ * Return: no return
  */
 void quick_sort(int *array, size_t size)
 {
