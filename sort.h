@@ -33,7 +33,7 @@ void quickSort(int *arr, int first_elem, int last_elem, size_t size);
 void quick_sort(int *array, size_t size);
 
 /* counting_sort */
-int max(int a[], size_t size);
+int max_val(int *array, int size);
 void counting_sort(int *array, size_t size);
 
 #endif
