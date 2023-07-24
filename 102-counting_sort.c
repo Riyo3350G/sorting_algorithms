@@ -9,10 +9,9 @@
 int max(int a[], size_t size)
 {
 	unsigned int i;
-	int max_value;
+	int max_value = a[0];
 
-	max_value = a[0];
-	for (i = 1; i < size; i++)
+	for (i = 0; i < size; i++)
 	{
 		if (a[i] > max_value)
 			max_value = a[i];
