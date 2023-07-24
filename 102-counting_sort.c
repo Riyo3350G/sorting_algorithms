@@ -11,6 +11,9 @@ int max(int a[], size_t size)
 	unsigned int i;
 	int max_value;
 
+	if (a == NULL || size < 2)
+		return;
+
 	max_value = a[0];
 	for (i = 1; i < size; i++)
 	{
