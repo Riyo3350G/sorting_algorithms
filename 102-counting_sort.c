@@ -31,7 +31,7 @@ int max(int a[], size_t size)
 */
 void counting_sort(int *array, size_t size)
 {
-	unsigned int i = 1;
+	unsigned int i = 0;
 	int *count = NULL, maximun = 0, j = 0;
 
 	if (array == NULL || size < 2)
