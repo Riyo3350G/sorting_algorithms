@@ -15,7 +15,7 @@ int max(int a[], size_t size)
 		return (0);
 
 	max_value = a[0];
-	for (i = 1; i < size; i++)
+	for (i = 0; i < size; i++)
 	{
 		if (a[i] > max_value)
 			max_value = a[i];
