@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- * get_max - Get the maximum value in an array of integers.
- * @array: An array of integers.
- * @size: The size of the array.
+ * max_val - Get the maximum value in an array of ints.
+ * @array: Array of ints.
+ * @size: Size of the array.
  *
- * Return: The maximum integer in the array.
+ * Return: The max value integer in the array.
  */
 int max_val(int *array, int size)
 {
@@ -23,46 +23,47 @@ int max_val(int *array, int size)
 /**
  * counting_sort - Sort an array of integers in ascending order
  *                 using the counting sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
+ * @array: Array of ints.
+ * @size: Size of the array.
  *
- * Description: Prints the counting array after setting it up.
+ * Return: no return(void)
  */
 void counting_sort(int *array, size_t size)
 {
-	int *count, *sorted, max, i;
+	int *ctr, *sorted_arr;
+	int max_value, i;
 
 	if (array == NULL || size < 2)
 		return;
 
-	sorted = malloc(sizeof(int) * size);
-	if (sorted == NULL)
+	sorted_arr = malloc(sizeof(int) * size);
+	if (sorted_arr == NULL)
 		return;
-	max = max_val(array, size);
-	count = malloc(sizeof(int) * (max + 1));
-	if (count == NULL)
+	max_value = max_val(array, size);
+	ctr = malloc(sizeof(int) * (max_value + 1));
+	if (ctr == NULL)
 	{
-		free(sorted);
+		free(sorted_arr);
 		return;
 	}
 
-	for (i = 0; i < (max + 1); i++)
-		count[i] = 0;
+	for (i = 0; i < (max_value + 1); i++)
+		ctr[i] = 0;
 	for (i = 0; i < (int)size; i++)
-		count[array[i]] += 1;
-	for (i = 0; i < (max + 1); i++)
-		count[i] += count[i - 1];
-	print_array(count, max + 1);
+		ctr[array[i]] += 1;
+	for (i = 0; i < (max_value + 1); i++)
+		ctr[i] += ctr[i - 1];
+	print_array(ctr, max_value + 1);
 
 	for (i = 0; i < (int)size; i++)
 	{
-		sorted[count[array[i]] - 1] = array[i];
-		count[array[i]] -= 1;
+		sorted_arr[ctr[array[i]] - 1] = array[i];
+		ctr[array[i]] -= 1;
 	}
 
 	for (i = 0; i < (int)size; i++)
-		array[i] = sorted[i];
+		array[i] = sorted_arr[i];
 
-	free(sorted);
-	free(count);
+	free(sorted_arr);
+	free(ctr);
 }
