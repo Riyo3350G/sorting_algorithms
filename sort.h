@@ -36,4 +36,8 @@ void quick_sort(int *array, size_t size);
 int max_val(int *array, int size);
 void counting_sort(int *array, size_t size);
 
+/* cocktail sort */
+void swaper(listint_t *node1, listint_t *node2, listint_t **head);
+void cocktail_sort_list(listint_t **list);
+
 #endif
